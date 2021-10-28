@@ -40,7 +40,7 @@ const Search = () => {
       setResults(movies.length);
       if (results === totalResults) setHasMore((hasMore) => !hasMore);
     }
-  }, [data, movies.length]);
+  }, [data, movies.length, results, totalResults]);
 
   return (
     <section className="container mx-auto py-20 sm:py-28">

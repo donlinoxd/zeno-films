@@ -10,7 +10,6 @@ const MovieDiscover = () => {
   const [genres, setGenres] = useState("");
   const [year, setYear] = useState("");
   const [pageNum, setPageNum] = useState(1);
-  const hasMore = true;
 
   const url = `${variables.BASE_URL}discover/movie?api_key=${variables.TMDB_API_KEY}&language=en-US&sort_by=popularity.desc&with_genres=${genres}&year=${year}&page=${pageNum}`;
 
@@ -66,7 +65,7 @@ const MovieDiscover = () => {
         <MovieListing
           movies={movies}
           handlePageNum={handlePageNum}
-          hasMore={hasMore}
+          hasMore={true}
         />
       ) : (
         !isLoading && (
