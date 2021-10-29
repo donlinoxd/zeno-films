@@ -5,8 +5,6 @@ import "react-toastify/dist/ReactToastify.min.css";
 
 export const addWatchlist = (userId, movie) => {
   return (dispatch, getState, { getFirebase }) => {
-    const toastId = toast.loading("Adding . . .");
-
     const db = getFirebase().firestore();
     const userDoc = db.collection("users").doc(userId);
     userDoc.get().then((doc) => {
@@ -16,18 +14,10 @@ export const addWatchlist = (userId, movie) => {
             movies: firebase.firestore.FieldValue.arrayUnion(movie),
           })
           .then(() =>
-            toast.update(toastId, {
-              render: "Success! You've added a movie to your watch list.",
-              type: "success",
-              isLoading: false,
-            })
+            toast.success("Success! You've added a movie to your watch list.")
           )
           .catch((error) =>
-            toast.update(toastId, {
-              render: "Error! The attempt to add a movie was unsuccessful.",
-              type: "success",
-              isLoading: false,
-            })
+            toast.error("Error! The attempt to add a movie was unsuccessful.")
           );
       } else {
         const { displayName, email, phoneNumber, photoURL } =
@@ -41,18 +31,10 @@ export const addWatchlist = (userId, movie) => {
             movies: [movie],
           })
           .then(() =>
-            toast.update(toastId, {
-              render: "Success! You've added a movie to your watch list.",
-              type: "success",
-              isLoading: false,
-            })
+            toast.success("Success! You've added a movie to your watch list.")
           )
           .catch((error) =>
-            toast.update(toastId, {
-              render: "Error! The attempt to add a movie was unsuccessful.",
-              type: "success",
-              isLoading: false,
-            })
+            toast.error("Error! The attempt to add a movie was unsuccessful.")
           );
       }
     });
