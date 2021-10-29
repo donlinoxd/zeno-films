@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import { addWatchlist } from "../../redux/actions/watchlistActions";
 
 const Buttons = (movie) => {
@@ -20,7 +21,7 @@ const Buttons = (movie) => {
         className="flex items-center justify-center flex-col cursor-pointer transform active:scale-90 opacity-80 hover:opacity-100"
         onClick={() => {
           if (!auth.uid) {
-            return alert(
+            return toast.warning(
               "Please log in to add your favorite film to the list."
             );
           } else if (movieIdList.includes(movie.id)) {

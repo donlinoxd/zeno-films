@@ -9,11 +9,9 @@ export const signInUserWithGoogle = () => {
       .auth()
       .signInWithPopup(provider)
       .then((result) => {
-        alert("Sign in successfully");
         dispatch({ type: actions.SIGNIN_USER, payload: "Log in Success" });
       })
       .catch((error) => {
-        alert(`Failed to Sign in! ${error.message}`);
         dispatch({ type: actions.SIGNIN_ERROR, payload: "Log in Error" });
       });
   };
@@ -27,11 +25,9 @@ export const signOutUser = () => {
       .auth()
       .signOut()
       .then(() => {
-        alert("Sign out successfully");
         dispatch({ type: actions.SIGNOUT_USER });
       })
       .catch((error) => {
-        alert(`Failed Sign out! ${error.message}`);
         dispatch({ type: actions.SIGNOUT_ERROR, payload: "Sign Out Error" });
       });
   };

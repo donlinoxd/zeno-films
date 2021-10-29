@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./helpers/scrollToTop";
+import { ToastContainer } from "react-toastify";
 const Navbar = React.lazy(() => import("./components/Navbar/Navbar"));
 const Home = React.lazy(() => import("./pages/Home/Home"));
 const MoviePage = React.lazy(() => import("./pages/MoviePage/MoviePage"));
@@ -19,6 +20,11 @@ const App = () => {
       <Router>
         <ScrollToTop />
         <Navbar />
+        <ToastContainer
+          style={{ display: "grid", placeItems: "center" }}
+          autoClose={4000}
+          position="top-center"
+        />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/movie/:id" component={MoviePage} />

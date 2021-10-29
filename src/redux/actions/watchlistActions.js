@@ -1,11 +1,14 @@
 import * as actions from "./actionTypes";
 import firebase from "../../config/fbConfig";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 
 export const addWatchlist = (userId, movie) => {
   return (dispatch, getState, { getFirebase }) => {
+    const toastId = toast.loading("Adding . . .");
+
     const db = getFirebase().firestore();
     const userDoc = db.collection("users").doc(userId);
-
     userDoc.get().then((doc) => {
       if (doc.exists) {
         userDoc
@@ -13,10 +16,18 @@ export const addWatchlist = (userId, movie) => {
             movies: firebase.firestore.FieldValue.arrayUnion(movie),
           })
           .then(() =>
-            alert("Success!!! You've added a movie to your watch list.")
+            toast.update(toastId, {
+              render: "Success! You've added a movie to your watch list.",
+              type: "success",
+              isLoading: false,
+            })
           )
           .catch((error) =>
-            alert("Error!!! The attempt to add a movie was unsuccessful.")
+            toast.update(toastId, {
+              render: "Error! The attempt to add a movie was unsuccessful.",
+              type: "success",
+              isLoading: false,
+            })
           );
       } else {
         const { displayName, email, phoneNumber, photoURL } =
@@ -30,10 +41,18 @@ export const addWatchlist = (userId, movie) => {
             movies: [movie],
           })
           .then(() =>
-            alert("Success!!! You've added a movie to your watch list.")
+            toast.update(toastId, {
+              render: "Success! You've added a movie to your watch list.",
+              type: "success",
+              isLoading: false,
+            })
           )
           .catch((error) =>
-            alert("Error!!! The attempt to add a movie was unsuccessful.")
+            toast.update(toastId, {
+              render: "Error! The attempt to add a movie was unsuccessful.",
+              type: "success",
+              isLoading: false,
+            })
           );
       }
     });
