@@ -2,7 +2,7 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
 
-production config
+// production config
 const fbConfig = {
   apiKey: "AIzaSyC0NTpoQgDzLDodZFHlvTWLObdReWzO2pQ",
   authDomain: "zeno-films-15e58.firebaseapp.com",
