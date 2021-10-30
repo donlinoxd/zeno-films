@@ -1,31 +1,32 @@
 import * as actions from "../actions/actionTypes";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.min.css";
 
 const initState = {
   error: "",
+  isLogged: false,
+  user: null,
 };
 
 const authReducer = (state = initState, action) => {
   switch (action.type) {
     case actions.SIGNIN_USER:
-      toast.success("Sign in succesful");
       return {
-        ...state,
+        error: "",
+        user: action.payload,
+        isLogged: true,
       };
     case actions.SIGNIN_ERROR:
-      toast.error("Failed to Sign in");
-      return {
-        ...state,
-      };
-    case actions.SIGNOUT_USER:
-      toast.success("Sign out succesful");
       return {
         ...state,
         error: action.payload,
       };
+    case actions.SIGNOUT_USER:
+      return {
+        ...state,
+        user: null,
+        isLogged: false,
+        error: "",
+      };
     case actions.SIGNOUT_ERROR:
-      toast.error("Failed to sign out");
       return {
         ...state,
         error: action.payload,

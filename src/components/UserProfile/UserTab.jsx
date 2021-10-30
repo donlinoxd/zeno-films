@@ -5,7 +5,7 @@ import SwiperCore, { Pagination, Navigation, Lazy } from "swiper/core";
 import { Link } from "react-router-dom";
 import { useFirestoreConnect } from "react-redux-firebase";
 import { useDispatch, useSelector } from "react-redux";
-import { signOutUser } from "../../redux/actions/authActions";
+import { signOutUser } from "../../firebase/auth";
 
 SwiperCore.use([Pagination, Navigation, Lazy]);
 

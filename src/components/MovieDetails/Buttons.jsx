@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { addWatchlist } from "../../redux/actions/watchlistActions";
+import { addWatchlist } from "../../firebase/firestore";
 
 const Buttons = (movie) => {
   const dispatch = useDispatch();

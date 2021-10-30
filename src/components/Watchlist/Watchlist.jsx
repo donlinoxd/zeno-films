@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { removeWatchlist } from "../../redux/actions/watchlistActions";
+import { removeWatchlist } from "../../firebase/firestore";
 import { useFirestoreConnect } from "react-redux-firebase";
 import variables from "../../helpers/variables";
 import { Link } from "react-router-dom";

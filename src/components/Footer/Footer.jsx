@@ -65,6 +65,9 @@ const Footer = () => {
             </li>
           </ul>
         </div>
+        <div className="text-center mt-4 opacity-70">
+          <p>Created by Lino, &copy; 2021</p>
+        </div>
       </div>
     </div>
   );

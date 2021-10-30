@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { signInUserWithGoogle } from "../../redux/actions/authActions";
+import { signInUserWithGoogle } from "../../firebase/auth";
 
 const NoUserTab = () => {
   const dispatch = useDispatch();

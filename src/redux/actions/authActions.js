@@ -1,34 +1,28 @@
 import * as actions from "./actionTypes";
 
-export const signInUserWithGoogle = () => {
-  return (dispatch, getState, { getFirebase }) => {
-    const firebase = getFirebase();
-    const provider = new firebase.auth.GoogleAuthProvider();
-
-    firebase
-      .auth()
-      .signInWithPopup(provider)
-      .then((result) => {
-        dispatch({ type: actions.SIGNIN_USER, payload: "Log in Success" });
-      })
-      .catch((error) => {
-        dispatch({ type: actions.SIGNIN_ERROR, payload: "Log in Error" });
-      });
+export const signIn = (user) => {
+  return {
+    type: actions.SIGNIN_USER,
+    payload: user,
   };
 };
 
-export const signOutUser = () => {
-  return (dispatch, getState, { getFirebase }) => {
-    const firebase = getFirebase();
+export const signInError = (error) => {
+  return {
+    type: actions.SIGNIN_ERROR,
+    payload: error.message,
+  };
+};
 
-    firebase
-      .auth()
-      .signOut()
-      .then(() => {
-        dispatch({ type: actions.SIGNOUT_USER });
-      })
-      .catch((error) => {
-        dispatch({ type: actions.SIGNOUT_ERROR, payload: "Sign Out Error" });
-      });
+export const signOut = () => {
+  return {
+    type: actions.SIGNOUT_USER,
+  };
+};
+
+export const signOutError = (error) => {
+  return {
+    type: actions.SIGNOUT_ERROR,
+    payload: error.message,
   };
 };

@@ -12,7 +12,7 @@ const Navbar = () => {
             <img className="w-full" src={logo} alt="logo" />
           </Link>
         </div>
-        <div className="text-xl tracking-wider font-semibold transform hover:scale-110 transition-all">
+        <div className="text-xl tracking-wider font-semibold transform hover:scale-110 transition-all absolute left-1/2 transform -translate-x-1/2">
           <Link to="/discover/movies">Movies</Link>
         </div>
         <div className="flex items-center justify-center space-x-3">

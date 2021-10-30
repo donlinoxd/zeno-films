@@ -1,5 +1,4 @@
-import * as actions from "./actionTypes";
-import firebase from "../../config/fbConfig";
+import firebase from "../config/fbConfig";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 
@@ -50,10 +49,10 @@ export const removeWatchlist = (userId, movie) => {
         movies: firebase.firestore.FieldValue.arrayRemove(movie),
       })
       .then(() => {
-        dispatch({ type: actions.REMOVE_WATCHLIST_SUCCESS });
+        toast.success("Success! You've removed a movie to your watch list.");
       })
       .catch((error) => {
-        dispatch({ type: actions.REMOVE_WATCHLIST_ERROR });
+        toast.error("Error! The attempt to remove a movie was unsuccessful.");
       });
   };
 };
