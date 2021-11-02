@@ -26,6 +26,25 @@ export const signInUserWithGoogle = () => {
   };
 };
 
+export const signInUserWithFacebook = () => {
+  return (dispatch, getState, { getFirebase }) => {
+    const firebase = getFirebase();
+    const provider = new firebase.auth.FacebookAuthProvider();
+
+    firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then((result) => {
+        toast.success("Sign in succesful");
+        dispatch(signIn(result));
+      })
+      .catch((error) => {
+        toast.error("Failed to sign in");
+        dispatch(signInError(error));
+      });
+  };
+};
+
 export const signOutUser = () => {
   return (dispatch, getState, { getFirebase }) => {
     const firebase = getFirebase();

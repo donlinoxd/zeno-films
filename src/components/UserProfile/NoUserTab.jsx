@@ -1,5 +1,8 @@
 import { useDispatch } from "react-redux";
-import { signInUserWithGoogle } from "../../firebase/auth";
+import {
+  signInUserWithGoogle,
+  signInUserWithFacebook,
+} from "../../firebase/auth";
 
 const NoUserTab = () => {
   const dispatch = useDispatch();
@@ -11,8 +14,9 @@ const NoUserTab = () => {
       </div>
       <div className="w-full bg-gray-300 space-y-2 text-gray-200 relative">
         <button
+          onClick={() => dispatch(signInUserWithFacebook())}
           type="button"
-          className="flex cursor-not-allowed space-x-2 items-center justify-center bg-blue-500 w-full font-semibold tracking-wider px-2 py-3 rounded-md text-md"
+          className="flex space-x-2 items-center justify-center bg-blue-500 w-full font-semibold tracking-wider px-2 py-3 rounded-md text-md"
         >
           <i className="fab fa-facebook-f text-gray-100 text-3xl absolute left-4" />
           <span>Login with Facebook</span>
