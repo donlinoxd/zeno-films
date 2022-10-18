@@ -1,23 +1,4 @@
-import { useEffect, useState } from 'react'
-import axios from 'axios'
-
 const VideoModal = ({ id, title, isVideoPlay, handleClick }) => {
-    const [videoURL, setVideoURL] = useState(null)
-
-    useEffect(() => {
-        const getUrl = async () => {
-            try {
-                const result = await axios(`https://seapi.link/?type=tmdb&id=${id}&max_results=1`)
-
-                setVideoURL(result.data.results[0].url)
-            } catch (error) {
-                console.log(error)
-            }
-        }
-
-        getUrl()
-    }, [id])
-
     if (isVideoPlay) document.body.style.overflow = 'hidden'
     else document.body.style.overflow = 'auto'
 
@@ -37,7 +18,7 @@ const VideoModal = ({ id, title, isVideoPlay, handleClick }) => {
                         <div className='h-0 overflow-hidden' style={{ paddingBottom: '52.25%', paddingTop: '30px' }}>
                             <iframe
                                 className='absolute top-0 left-0 w-full h-full'
-                                src={videoURL}
+                                src={`https://2embed.org/embed/movie?tmdb=${id}`}
                                 title={title}
                                 frameBorder='0'
                                 allowFullScreen={true}
