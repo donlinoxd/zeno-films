@@ -18,7 +18,7 @@ const VideoModal = ({ id, title, isVideoPlay, handleClick }) => {
                         <div className='h-0 overflow-hidden' style={{ paddingBottom: '52.25%', paddingTop: '30px' }}>
                             <iframe
                                 className='absolute top-0 left-0 w-full h-full'
-                                src={`https://2embed.org/embed/movie?tmdb=${id}`}
+                                src={`https://multiembed.mov/?video_id=${id}&tmdb=1`}
                                 title={title}
                                 frameBorder='0'
                                 allowFullScreen={true}
